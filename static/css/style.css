@@ -1,0 +1,35 @@
+.border {
+	border: 2px solid red;
+}
+#countdown {
+
+	font-size: 40px;
+	color : red;
+	animation-name: blinker;
+	    animation-duration: 0.9s;
+	    animation-timing-function: linear;
+	    animation-iteration-count: infinite;
+
+	    -webkit-animation-name: blinker;
+	    -webkit-animation-duration: 0.9s;
+	    -webkit-animation-timing-function: linear;
+	    -webkit-animation-iteration-count: infinite;
+	}
+
+	@-moz-keyframes blinker {  
+	    0% { opacity: 1.0; }
+	    50% { opacity: 0.0; }
+	    100% { opacity: 1.0; }
+	}
+
+	@-webkit-keyframes blinker {  
+	    0% { opacity: 1.0; }
+	    50% { opacity: 0.0; }
+	    100% { opacity: 1.0; }
+	}
+
+	@keyframes blinker {  
+	    0% { opacity: 1.0; }
+	    50% { opacity: 0.0; }
+	    100% { opacity: 1.0; }
+	}
