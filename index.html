@@ -9,9 +9,26 @@
 </head>
 <body>
 	<div id="countdown"></div>
-	<video id="video" width="640" height="480" class="border" autoplay></video>
+	<video id="video" autoplay></video>
 	<button id="snap" onclick='snap()' hidden="hidden">Snap Photo</button>
 	<button id="download" hidden="hidden">Download</button>
-	<canvas id="canvas" width="640" height="480" class="border"></canvas>
+	<canvas id="canvas" width="640" height="480" class="border" hidden="hidden"></canvas>
+
+<script type="text/javascript">
+var idx = 0;
+var filters = ['blur', 'invert','saturate','grayscale','contrast','brightness','sepia','huerotate','.rss.opacity',''];
+
+function changeFilter(e) {
+  var el = e.target;
+  el.className = '';
+  var effect = filters[idx++ % filters.length]; // loop through filters.
+  if (effect) {
+    el.classList.add(effect);
+  }
+}
+document.querySelector('video').addEventListener(
+    'click', changeFilter);
+</script>
+
 </body>
 </html>

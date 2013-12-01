@@ -1,6 +1,22 @@
 .border {
 	border: 2px solid red;
 }
+
+video {
+  	width: 400px;
+  	height: 300px;
+}
+.blur {-webkit-filter: blur(2px);}
+.invert {-webkit-filter: invert(100%);}
+.saturate {-webkit-filter: saturate(3);}
+.grayscale {-webkit-filter: grayscale(100%);}
+.contrast {-webkit-filter: contrast(160%);}
+.brightness {-webkit-filter: brightness(0.25);}
+.sepia {-webkit-filter: sepia(100%);}
+.huerotate {-webkit-filter: hue-rotate(180deg);}
+.rss.opacity {-webkit-filter: opacity(50%);}
+
+
 #countdown {
 
 	font-size: 40px;

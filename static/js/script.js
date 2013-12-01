@@ -23,12 +23,13 @@ navigator.getMedia(
     // errorCallback
     function (err) {
         console.log("The following error occured: " + err);
+        $("#countdown").text("Please Reload and ENABLE your camera");
     }
 
 );
 
 function updateCountdown() {
-    var seconds = 4;
+    var seconds = 2;
     setTimeout(countdown, 900);
 
     function countdown() {
@@ -38,21 +39,27 @@ function updateCountdown() {
             setTimeout(countdown, 900);
         } else {
             $("#countdown").text(seconds + " seconds... Cheese!");
+
+            video.pause(); 
+
             var canvas = document.getElementById("canvas");
             $("#countdown").text("");
             $('#download').show();
-            context = canvas.getContext("2d");
+            context = canvas.getContext("2d");          
             context.drawImage(video, 0, 0, 640, 480);
+
+
             $('#snap').prop("disabled", false);
             $("#download").click(function () {
                 var cs = new saver('download.php');
-                cs.savePNG(canvas, 'image');
+                cs.saveJPG(canvas, 'image');
             });
         }
     }
 };
 
 function snap() {
+    video.play();
     $('#snap').attr("disabled", true);
     updateCountdown();
 }
@@ -60,11 +67,11 @@ function snap() {
 function saver(url) {
     this.url = url;
 
-    this.savePNG = function (canvas, fname) {
+    this.saveJPG = function (canvas, fname) {
         if (!canvas || !url) return;
         fname = fname || 'picture';
 
-        var data = canvas.toDataURL("image/png");
+        var data = canvas.toDataURL("image/jpg");
         data = data.substr(data.indexOf(',') + 1).toString();
 
         var dataInput = document.createElement("input");
@@ -74,7 +81,7 @@ function saver(url) {
 
         var nameInput = document.createElement("input");
         nameInput.setAttribute("name", 'name');
-        nameInput.setAttribute("value", fname + '.png');
+        nameInput.setAttribute("value", fname + '.jpg');
 
         var myForm = document.createElement("form");
         myForm.method = 'post';
@@ -86,4 +93,5 @@ function saver(url) {
         myForm.submit();
         document.body.removeChild(myForm);
     };
+    
 }
