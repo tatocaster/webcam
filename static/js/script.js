@@ -45,15 +45,22 @@ function updateCountdown() {
             var canvas = document.getElementById("canvas");
             $("#countdown").text("");
             $('#download').show();
+            $('#bright').show();
             context = canvas.getContext("2d");          
             context.drawImage(video, 0, 0, 640, 480);
 
 
             $('#snap').prop("disabled", false);
+
             $("#download").click(function () {
-                var cs = new saver('download.php');
+                var cs = new saver('lib/gray.php');
                 cs.savePNG(canvas, 'image');
             });
+            $("#bright").click(function () {
+                var cs = new saver('lib/brightness.php');
+                cs.savePNG(canvas, 'image');
+            });
+
         }
     }
 };
