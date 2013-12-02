@@ -29,7 +29,7 @@ navigator.getMedia(
 );
 
 function updateCountdown() {
-    var seconds = 2;
+    var seconds = 4;
     setTimeout(countdown, 900);
 
     function countdown() {
@@ -52,7 +52,7 @@ function updateCountdown() {
             $('#snap').prop("disabled", false);
             $("#download").click(function () {
                 var cs = new saver('download.php');
-                cs.saveJPG(canvas, 'image');
+                cs.savePNG(canvas, 'image');
             });
         }
     }
@@ -67,11 +67,11 @@ function snap() {
 function saver(url) {
     this.url = url;
 
-    this.saveJPG = function (canvas, fname) {
+    this.savePNG = function (canvas, fname) {
         if (!canvas || !url) return;
         fname = fname || 'picture';
 
-        var data = canvas.toDataURL("image/jpg");
+        var data = canvas.toDataURL("image/png");
         data = data.substr(data.indexOf(',') + 1).toString();
 
         var dataInput = document.createElement("input");
@@ -81,7 +81,7 @@ function saver(url) {
 
         var nameInput = document.createElement("input");
         nameInput.setAttribute("name", 'name');
-        nameInput.setAttribute("value", fname + '.jpg');
+        nameInput.setAttribute("value", fname + '.png');
 
         var myForm = document.createElement("form");
         myForm.method = 'post';

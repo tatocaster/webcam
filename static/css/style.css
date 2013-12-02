@@ -3,8 +3,8 @@
 }
 
 video {
-  	width: 400px;
-  	height: 300px;
+  	width: 640px;
+  	height: 480px;
 }
 .blur {-webkit-filter: blur(2px);}
 .invert {-webkit-filter: invert(100%);}
