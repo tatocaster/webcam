@@ -8,16 +8,17 @@
 	<script type="text/javascript"></script>
 </head>
 <body>
+	<h1>Click To Choose Filter</h1>
 	<div id="countdown"></div>
-	<video id="video" autoplay></video>
+	<video id="video" autoplay>a</video>
 	<button id="snap" onclick='snap()' hidden="hidden">Snap Photo</button>
-	<button id="download" hidden="hidden">Convert to Grayscale</button>
-	<button id="bright" hidden="hidden">Brightness</button>
+	<button id="download" hidden="hidden">Download</button>
 	<canvas id="canvas" width="640" height="480" class="border" hidden="hidden"></canvas>
+	<div id="success"></div>
 
 <script type="text/javascript">
 var idx = 0;
-var filters = ['blur', 'invert','saturate','grayscale','contrast','brightness','sepia','huerotate','.rss.opacity',''];
+var filters = ['blur', 'invert','saturate','grayscale','contrast','brightness','sepia','huerotate','.rss.opacity','video'];
 
 function changeFilter(e) {
   var el = e.target;
@@ -25,6 +26,8 @@ function changeFilter(e) {
   var effect = filters[idx++ % filters.length]; // loop through filters.
   if (effect) {
     el.classList.add(effect);
+    el.value=effect;
+    console.log (el.value);
   }
 }
 document.querySelector('video').addEventListener(

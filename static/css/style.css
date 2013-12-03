@@ -11,7 +11,7 @@ video {
 .saturate {-webkit-filter: saturate(3);}
 .grayscale {-webkit-filter: grayscale(100%);}
 .contrast {-webkit-filter: contrast(160%);}
-.brightness {-webkit-filter: brightness(0.25);}
+.brightness {-webkit-filter: brightness(1.5);}
 .sepia {-webkit-filter: sepia(100%);}
 .huerotate {-webkit-filter: hue-rotate(180deg);}
 .rss.opacity {-webkit-filter: opacity(50%);}

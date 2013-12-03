@@ -39,7 +39,7 @@ function updateCountdown() {
             setTimeout(countdown, 900);
         } else {
             $("#countdown").text(seconds + " seconds... Cheese!");
-
+            $("#countdown").hide();
             video.pause(); 
 
             var canvas = document.getElementById("canvas");
@@ -53,11 +53,7 @@ function updateCountdown() {
             $('#snap').prop("disabled", false);
 
             $("#download").click(function () {
-                var cs = new saver('lib/gray.php');
-                cs.savePNG(canvas, 'image');
-            });
-            $("#bright").click(function () {
-                var cs = new saver('lib/brightness.php');
+                var cs = new saver("lib/download.php?id="+video.value);
                 cs.savePNG(canvas, 'image');
             });
 
@@ -66,9 +62,11 @@ function updateCountdown() {
 };
 
 function snap() {
+
     video.play();
     $('#snap').attr("disabled", true);
     updateCountdown();
+    document.querySelector('video').removeEventListener('click', changeFilter , false);
 }
 
 function saver(url) {
