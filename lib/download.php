@@ -19,25 +19,42 @@ $decoded = base64_decode($encoded);
 
 $gray = IMG_FILTER_GRAYSCALE;
 $brightness = IMG_FILTER_BRIGHTNESS;
+$blur = IMG_FILTER_GAUSSIAN_BLUR;
 $size = 100;
 
 switch ($id){
 	case "grayscale":
 		image_filter($decoded,$gray);
 	break;
-
 	case "brightness":
 		image_filter($decoded,$brightness,$size);
+	break;
+	case "blur":
+		image_filter($decoded,$blur);
+	break;
+	case "invert":
+		image_filter($decoded,$invert);
+	break;
+	case "sepia":
+		file_put_contents('image.png', $decoded);
+		$img = imagecreatefrompng('image.png');
+		imagefilter($img,$gray);
+		imagefilter($img,IMG_FILTER_COLORIZE,100,50,0);
+		imagepng($img,'image_mod.png');
+		imagedestroy($img);
+		echo "<img src='image_mod.png' />";
+		echo "<button><a href='image_mod.png' style='text-decoration:none;' download='Image'>Download Image</a></button>";
+		echo "<button><a href='../' style='text-decoration:none;'>New Image</a></button>";
 	break;
 	default : 
 	echo "Some Error Occured, Try Again";
 }
 
 
-function image_filter($decoded,$gray, $size=0){
+function image_filter($decoded,$effect, $size=0){
 	file_put_contents('image.png', $decoded);
 	$img = imagecreatefrompng('image.png');
-	imagefilter($img,$gray,$size);
+	imagefilter($img,$effect,$size);
 	imagepng($img,'image_mod.png');
 	imagedestroy($img);
 	echo "<img src='image_mod.png' />";
