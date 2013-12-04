@@ -23,6 +23,18 @@ $blur = IMG_FILTER_GAUSSIAN_BLUR;
 $size = 100;
 
 switch ($id){
+	case "undefined":
+		file_put_contents('image.png', $decoded);
+		echo "<img src='image.png' />";
+		echo "<button><a href='image.png' style='text-decoration:none;' download='Image'>Download Image</a></button>";
+		echo "<button><a href='../' style='text-decoration:none;'>New Image</a></button>";
+	break;
+	case "video":
+		file_put_contents('image.png', $decoded);
+		echo "<img src='image.png' />";
+		echo "<button><a href='image.png' style='text-decoration:none;' download='Image'>Download Image</a></button>";
+		echo "<button><a href='../' style='text-decoration:none;'>New Image</a></button>";
+	break;
 	case "grayscale":
 		image_filter($decoded,$gray);
 	break;
