@@ -33,6 +33,7 @@ function updateCountdown() {
     setTimeout(countdown, 900);
 
     function countdown() {
+        $('h1').hide();
         seconds--;
         if (seconds > 0) {
             $("#countdown").text(seconds + " seconds... Cheese!");
@@ -45,7 +46,6 @@ function updateCountdown() {
             var canvas = document.getElementById("canvas");
             $("#countdown").text("");
             $('#download').show();
-            $('#bright').show();
             context = canvas.getContext("2d");          
             context.drawImage(video, 0, 0, 640, 480);
 
