@@ -54,7 +54,7 @@ function updateCountdown() {
 
             $("#download").click(function () {
                 var cs = new saver("lib/download.php?id="+video.value);
-                cs.savePNG(canvas, 'image');
+                cs.savePNG(canvas);
             });
 
         }
@@ -72,9 +72,8 @@ function snap() {
 function saver(url) {
     this.url = url;
 
-    this.savePNG = function (canvas, fname) {
+    this.savePNG = function (canvas) {
         if (!canvas || !url) return;
-        fname = fname || 'picture';
 
         var data = canvas.toDataURL("image/png");
         data = data.substr(data.indexOf(',') + 1).toString();
@@ -86,7 +85,6 @@ function saver(url) {
 
         var nameInput = document.createElement("input");
         nameInput.setAttribute("name", 'name');
-        nameInput.setAttribute("value", fname + '.png');
 
         var myForm = document.createElement("form");
         myForm.method = 'post';
@@ -98,5 +96,4 @@ function saver(url) {
         myForm.submit();
         document.body.removeChild(myForm);
     };
-    
 }
