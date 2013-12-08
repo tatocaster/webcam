@@ -76,24 +76,20 @@ function saver(url) {
         if (!canvas || !url) return;
 
         var data = canvas.toDataURL("image/png");
-        data = data.substr(data.indexOf(',') + 1).toString();
+        data = data.substr(data.indexOf(',') + 1).toString(); //remove base64
 
         var dataInput = document.createElement("input");
         dataInput.setAttribute("name", 'imgdata');
         dataInput.setAttribute("value", data);
         dataInput.setAttribute("type", "hidden");
 
-        var nameInput = document.createElement("input");
-        nameInput.setAttribute("name", 'name');
+        var form = document.createElement("form");
+        form.method = 'post';
+        form.action = url;
+        form.appendChild(dataInput);
 
-        var myForm = document.createElement("form");
-        myForm.method = 'post';
-        myForm.action = url;
-        myForm.appendChild(dataInput);
-        myForm.appendChild(nameInput);
-
-        document.body.appendChild(myForm);
-        myForm.submit();
-        document.body.removeChild(myForm);
+        document.body.appendChild(form);
+        form.submit();
+        document.body.removeChild(form);
     };
 }
